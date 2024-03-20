@@ -22,7 +22,7 @@ Each command is run with the general command: winsc.exe [...arguments...]
 
 Obtains and displays information about the specified service
 
-Syntax: query [SERVICENAME]
+**Syntax**: query [SERVICENAME]
 
 # Create
 
