@@ -64,10 +64,10 @@ Sends a request to stop a service.
 **Syntax**: failure [SERVICENAME] [PARAMETER] [VALUE]
 
 Parameters: 
-**reset**:          specifies the time after which to reset the failure count to zero if there are no failures
-**reboot**:         message to be broadcast to server users before rebooting
-**command**:        command-line command to be run when the specified service fails
-**restart**:        specifies the length of time to wait before restarting in milliseconds
+reset:          specifies the time after which to reset the failure count to zero if there are no failures
+reboot:         message to be broadcast to server users before rebooting
+command:        command-line command to be run when the specified service fails
+restart:        specifies the length of time to wait before restarting in milliseconds
 
 
 
