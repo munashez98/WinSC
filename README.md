@@ -10,7 +10,7 @@ To build the DLL do the following:
   4. rc -r sample.rc
   5. link -dll -noentry -out:sample.dll sample.res
      
-* step 5 may be unnecessary depending on your operating system
+* step 5 may be unnecessary depending on your operating system and you may be able to run this with the generated sample.h file
 
 The samplemc folder should include rc and mc but if you decide to use your computer's native mc and rc files they can typically be found in C:\Program Files (x86)\Windows Kits\10\bin\10.0..\x64\mc.exe) and C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64\rc.exe.
 
