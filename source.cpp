@@ -187,7 +187,6 @@ VOID __stdcall DisplayUsage() //Displays how to use the tool via the command lin
     printf("\t  create [SERVICENAME] [PATH]\n");
     printf("\t  describe [SERVICENAME]\n");
     printf("\t  config [SERVICENAME] [PARAMETER] [VALUE]\n");
-    printf("\t  disable [SERVICENAME]\n");
     printf("\t  start [SERVICENAME]\n");
     printf("\t  stop [SERVICENAME]\n");
     printf("\t  failure [SERVICENAME] [PARAMETER] [VALUE]\n");
@@ -197,13 +196,13 @@ VOID __stdcall DisplayManual() //displays tool manual
 {
     printf("Description:\n");
     printf("\tCommand-line tool that emulates sc.exe functionality.\n\n");
+    printf("Author: Munashe Zanza\n\n");
     printf("Usage:\n\n");
     printf("\t[commands]\n");
     printf("\t  query [SERVICENAME]\n");
     printf("\t  create [SERVICENAME] [PATH]\n");
     printf("\t  describe [SERVICENAME]\n");
     printf("\t  config [SERVICENAME] [PARAMETER] [VALUE]\n");
-    printf("\t  disable [SERVICENAME]\n");
     printf("\t  start [SERVICENAME]\n");
     printf("\t  stop [SERVICENAME]\n");
     printf("\t  failure [SERVICENAME] [PARAMETER] [VALUE]\n\n\n");
