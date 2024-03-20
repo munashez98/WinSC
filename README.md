@@ -43,9 +43,9 @@ Modifies the value of a service's entries in the registry and in the Service Con
 **Syntax**: config [SERVICENAME] [PARAMETER] [VALUE]
 
 Parameters: 
-**start**:          configure service start type
-**error**:          specify the severity of the error
-**type**:           specify service type
+* start:          configure service start type
+* error:          specify the severity of the error
+* type:           specify service type
 
 # Start
 
@@ -63,11 +63,11 @@ Sends a request to stop a service.
 
 **Syntax**: failure [SERVICENAME] [PARAMETER] [VALUE]
 
-Parameters: 
-reset:          specifies the time after which to reset the failure count to zero if there are no failures
-reboot:         message to be broadcast to server users before rebooting
-command:        command-line command to be run when the specified service fails
-restart:        specifies the length of time to wait before restarting in milliseconds
+Parameters:
+* reset:          specifies the time after which to reset the failure count to zero if there are no failures
+* reboot:         message to be broadcast to server users before rebooting
+* command:        command-line command to be run when the specified service fails
+* restart:        specifies the length of time to wait before restarting in milliseconds
 
 
 
