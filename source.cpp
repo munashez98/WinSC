@@ -32,7 +32,7 @@ VOID __stdcall DoSvcConfigureStart(void);
 VOID __stdcall DoSvcConfigureError(void);
 VOID __stdcall DoSvcConfigureType(void);
 VOID __stdcall DoSvcFailure(void);
-
+VOID __stdcall DoDeleteSvc(void);
 
 //  
 // Purpose: 
@@ -166,6 +166,8 @@ int __cdecl _tmain(int argc, TCHAR* argv[])
         DoEnableSvc();
     else if (lstrcmpi(szCommand, TEXT("stop")) == 0)
         DoStopSvc();
+    else if (lstrcmpi(szCommand, TEXT("delete")) == 0)
+        DoDeleteSvc();
     else
     {
         _tprintf(TEXT("Unknown command (%s)\n\n"), szCommand);
@@ -184,6 +186,7 @@ VOID __stdcall DisplayUsage() //Displays how to use the tool via the command lin
     printf("\tsvcconfig [command] [service_name]\n\n");
     printf("\t[commands]\n");
     printf("\t  query [SERVICENAME]\n");
+    printf("\t  delete [SERVICENAME]\n");
     printf("\t  create [SERVICENAME] [PATH]\n");
     printf("\t  describe [SERVICENAME]\n");
     printf("\t  config [SERVICENAME] [PARAMETER] [VALUE]\n");
@@ -200,6 +203,7 @@ VOID __stdcall DisplayManual() //displays tool manual
     printf("Usage:\n\n");
     printf("\t[commands]\n");
     printf("\t  query [SERVICENAME]\n");
+    printf("\t  delete [SERVICENAME]\n");
     printf("\t  create [SERVICENAME] [PATH]\n");
     printf("\t  describe [SERVICENAME]\n");
     printf("\t  config [SERVICENAME] [PARAMETER] [VALUE]\n");
@@ -1256,6 +1260,60 @@ VOID __stdcall DoSvcFailure()
         printf("Service failure actions updated successfully.\n");
 
 cleanup:
+    CloseServiceHandle(schService);
+    CloseServiceHandle(schSCManager);
+}
+
+//
+// Purpose: 
+//   Deletes a service from the SCM database
+//
+// Parameters:
+//   None
+// 
+// Return value:
+//   None
+//
+VOID __stdcall DoDeleteSvc()
+{
+    SC_HANDLE schSCManager;
+    SC_HANDLE schService;
+
+    // Get a handle to the SCM database. 
+
+    schSCManager = OpenSCManager(
+        NULL,                    // local computer
+        NULL,                    // ServicesActive database 
+        SC_MANAGER_ALL_ACCESS);  // full access rights 
+
+    if (NULL == schSCManager)
+    {
+        printf("OpenSCManager failed (%d)\n", GetLastError());
+        return;
+    }
+
+    // Get a handle to the service.
+
+    schService = OpenService(
+        schSCManager,       // SCM database 
+        szSvcName,          // name of service 
+        DELETE);            // need delete access 
+
+    if (schService == NULL)
+    {
+        printf("OpenService failed (%d)\n", GetLastError());
+        CloseServiceHandle(schSCManager);
+        return;
+    }
+
+    // Delete the service.
+
+    if (!DeleteService(schService))
+    {
+        printf("DeleteService failed (%d)\n", GetLastError());
+    }
+    else printf("Service deleted successfully\n");
+
     CloseServiceHandle(schService);
     CloseServiceHandle(schSCManager);
 }
