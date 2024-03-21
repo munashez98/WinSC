@@ -47,6 +47,11 @@ Parameters:
 * error:          specify the severity of the error
 * type:           specify service type
 
+Values:
+* start - takes values from the command line as text
+* error - takes values from the command line as text
+* type - takes values from the command line as text
+
 # Start
 
 Starts a service
@@ -68,6 +73,12 @@ Parameters:
 * reboot:         message to be broadcast to server users before rebooting
 * command:        command-line command to be run when the specified service fails
 * restart:        specifies the length of time to wait before restarting in milliseconds
+
+Values:
+* reset - takes value from the command line as an integer
+* reboot - takes values from the command line as text enclosed in double quotation marks("  ")
+* command - takes values from the command line as text enclosed in double quotation marks("  ")
+* restart - takes value from the command line as an integer
 
 
 
