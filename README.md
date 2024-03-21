@@ -24,6 +24,12 @@ Obtains and displays information about the specified service
 
 **Syntax**: query [SERVICENAME]
 
+# Delete
+
+Delete a service
+
+**Syntax**: delete [SERVICENAME]
+
 # Create
 
 Creates an entry for a service in the Service Control Manager database.
